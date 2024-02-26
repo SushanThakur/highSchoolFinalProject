@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
-#include <ctype.h> //for toUpper() and toLower() funcitons
+#include <ctype.h> //for toupper() and tolower() funcitons
 
 // FUNCTION DECLARATION
 void displayOptions(void); // display the options main menu
