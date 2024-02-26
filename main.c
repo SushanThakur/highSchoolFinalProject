@@ -2,18 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
-#include <ctype.h>
+#include <ctype.h> //for toUpper() and toLower() funcitons
 
-void displayOptions(void);
-void enterRecord(void);
-void displayRecord(void);
-void searchRecord(void);
-void editRecord(void);
-void ascending(void);
-void descending(void);
-void deleteRecord(void);
-void store(void);
+// FUNCTION DECLARATION
+void displayOptions(void); // display the options main menu
+void enterRecord(void);    // takes input from user and stores it in structure and calls store function
+void displayRecord(void);  // reads the "store.txt" file and lists its contents in formatted format
+void searchRecord(void);   // searches "store.txt" file for suitable matches
+void editRecord(void);     // Edits the required data
+void ascending(void);      // Sorts the data stored in the file on the basis of increasing order of marks
+void descending(void);     // Sorts the data stored in the file on the basis of decreasing order of marks
+void deleteRecord(void);   // Deletes the uncessary record
 
+void store(void); // Used to feed data to file
+
+// STRUCTURE TO HOLD DATA TEMPORARLY
 struct Student
 {
   char full_name[55];
@@ -23,9 +26,11 @@ struct Student
   int math;
 } student[100];
 int n;
+int i, j;
 
 int main(void)
 {
+  // while loop to repeate whole program over and over again
   while (1)
   {
     system("cls");
@@ -43,7 +48,7 @@ int main(void)
       break;
     case '2':
       displayRecord();
-      printf("\n\nPress any key to exit view.");
+      printf("\n\nPress any key to exit view."); // to keep holding the displayRecord menu
       getch();
       break;
     case '3':
@@ -65,7 +70,8 @@ int main(void)
       return 0;
       break;
     default:
-      printf("\nWrong Input. Try again!");
+      printf("\nWrong Input. Try again!"); // In-case user enters invalid character
+      printf("\nPress any key to continue...");
       getch();
       break;
     }
@@ -110,7 +116,7 @@ void enterRecord(void)
     return;
   }
 
-  for (int i = 0; i < n; i++)
+  for (i = 0; i < n; i++)
   {
     printf("\n| Student %d:", i + 1);
     printf("\n|    Name: ");
@@ -217,7 +223,6 @@ void searchRecord(void)
     {
       // Convert name to lowercase for case insensitivity
       char lowercaseName[55];
-      int i;
       for (i = 0; fn[i] != '\0'; i++)
       {
         lowercaseName[i] = tolower(fn[i]);
@@ -437,7 +442,7 @@ void ascending()
   printf("| S.N | Name                 | Roll Number | English | Nepali | Math | Total | Percentage |\n");
   printf("+-----+----------------------+-------------+---------+--------+------+-------+------------+\n");
 
-  for (int i = 0; i < num_records; i++)
+  for (i = 0; i < num_records; i++)
   {
     int total = students[i].eng + students[i].nep + students[i].math;
     float percentage = (float)total / 300 * 100;
@@ -510,9 +515,9 @@ void descending(void)
   fclose(fp);
 
   // Sort the array of students based on total marks
-  for (int i = 0; i < num_records - 1; i++)
+  for (i = 0; i < num_records - 1; i++)
   {
-    for (int j = 0; j < num_records - i - 1; j++)
+    for (j = 0; j < num_records - i - 1; j++)
     {
       int total_j = students[j].eng + students[j].nep + students[j].math;
       int total_j_plus_1 = students[j + 1].eng + students[j + 1].nep + students[j + 1].math;
@@ -536,7 +541,7 @@ void descending(void)
   printf("| S.N | Name                 | Roll Number | English | Nepali | Math | Total | Percentage |\n");
   printf("+-----+----------------------+-------------+---------+--------+------+-------+------------+\n");
 
-  for (int i = 0; i < num_records; i++)
+  for (i = 0; i < num_records; i++)
   {
     int total = students[i].eng + students[i].nep + students[i].math;
     float percentage = (float)total / 300 * 100;
@@ -638,7 +643,7 @@ void store(void)
   if (fp != NULL)
   {
     // fprintf(fp, "%d\n", n);
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
       fprintf(fp, "%s,%d,%d,%d,%d\n", student[i].full_name, student[i].roll, student[i].eng, student[i].nep, student[i].math);
     }
