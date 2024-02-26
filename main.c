@@ -65,7 +65,8 @@ int main(void)
       return 0;
       break;
     default:
-      printf("\nSomething Went Wrong");
+      printf("\nWrong Input. Try again!");
+      getch();
       break;
     }
   }
@@ -74,6 +75,8 @@ int main(void)
 void displayOptions(void)
 {
   system("cls");
+  printf("\n\n");
+  printf("          # STUDENT RECORD MANAGEMENT SYSTEM #\n");
   printf("\n +-------------------------------------------------------+\n");
   printf(" |                        MENU                           |\n");
   printf(" +-------------------------------------------------------+\n");
@@ -92,6 +95,8 @@ void displayOptions(void)
 void enterRecord(void)
 {
   system("cls");
+  printf("\n\n");
+  printf("         # STUDENT RECORD MANAGEMENT SYSTEM #\n");
   printf("+-------------------------------------------------------+\n");
   printf("|                  Enter Record Menu                    |\n");
   printf("+-------------------------------------------------------+\n");
@@ -136,6 +141,8 @@ void enterRecord(void)
 void displayRecord(void)
 {
   system("cls");
+  printf("\n\n");
+  printf("                          # STUDENT RECORD MANAGEMENT SYSTEM #\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
   printf("|                                    Display Record Menu                                  |\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
@@ -170,6 +177,8 @@ void displayRecord(void)
 void searchRecord(void)
 {
   system("cls");
+  printf("\n\n");
+  printf("                              # STUDENT RECORD MANAGEMENT SYSTEM #\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
   printf("|                            Search Record Menu (Name or Roll Number)                     |\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
@@ -243,6 +252,8 @@ void searchRecord(void)
 void editRecord(void)
 {
   system("cls");
+  printf("\n\n");
+  printf("                          # STUDENT RECORD MANAGEMENT SYSTEM #\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
   printf("|                                    Edit Record Menu                                     |\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
@@ -418,6 +429,8 @@ void ascending()
 
   // Display the sorted records
   system("cls");
+  printf("\n\n");
+  printf("                          # STUDENT RECORD MANAGEMENT SYSTEM #\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
   printf("|                        Records in Ascending Order (total marks)                         |\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
@@ -515,6 +528,8 @@ void descending(void)
 
   // Display the sorted records
   system("cls");
+  printf("\n\n");
+  printf("                            # STUDENT RECORD MANAGEMENT SYSTEM #\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
   printf("|                        Records in Descending Order (total marks)                        |\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
@@ -541,6 +556,8 @@ void deleteRecord(void)
   int serial = 0;
   struct Student student;
   system("cls");
+  printf("\n\n");
+  printf("                            # STUDENT RECORD MANAGEMENT SYSTEM #\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
   printf("|                           Delete Record Menu (by Serial Number)                         |\n");
   printf("+-----------------------------------------------------------------------------------------+\n");
