@@ -198,6 +198,7 @@ void searchRecord(void)
     int counter = 1;
     char searchQuery[100];
     int searchCriteria;
+    int headPrinted = 0;
     printf("Search by:\n");
     printf("    1. Name\n");
     printf("    2. Roll Number\n");
@@ -216,9 +217,6 @@ void searchRecord(void)
 
     rewind(fp);
 
-    printf("+-----------------------------------------------------------------------------------------+\n");
-    printf("| S.N | Name                 | Roll Number | English | Nepali | Math | Total | Percentage |\n");
-    printf("+-----+----------------------+-------------+---------+--------+------+-------+------------+\n");
     while (fscanf(fp, "%[^,],%d,%d,%d,%d\n", fn, &r, &e, &n, &m) == 5)
     {
       // Convert name to lowercase for case insensitivity
@@ -233,6 +231,13 @@ void searchRecord(void)
       {
         t = e + n + m;
         p = (float)t / 300 * 100;
+        if (!headPrinted)
+        {
+          printf("+-----------------------------------------------------------------------------------------+\n");
+          printf("| S.N | Name                 | Roll Number | English | Nepali | Math | Total | Percentage |\n");
+          printf("+-----+----------------------+-------------+---------+--------+------+-------+------------+\n");
+          headPrinted = 1;
+        }
         printf("| %-3d | %-20s | %-11d | %-7d | %-6d | %-4d | %-5d | %-10.2f |\n", counter, fn, r, e, n, m, t, p);
         counter++;
       }
@@ -243,13 +248,15 @@ void searchRecord(void)
     {
       printf("No records found matching the search criteria.\n");
     }
+    if (counter > 1)
+    {
+      printf("+-----+----------------------+-------------+---------+--------+------+-------+------------+\n");
+    }
   }
   else
   {
     printf("Error: Unable to open file for reading.\n");
   }
-
-  printf("+-----+----------------------+-------------+---------+--------+------+-------+------------+\n");
   printf("\n\nPress any key to exit view.");
   getch();
 }
@@ -576,20 +583,30 @@ void deleteRecord(void)
     int r, e, n, m, t;
     float p;
     int counter = 1;
+    int refSerial = 0;
     rewind(fp);
     while (fscanf(fp, "%[^,],%d,%d,%d,%d\n", fn, &r, &e, &n, &m) == 5)
     {
       t = e + n + m;
       p = (float)t / 300 * 100;
       printf("| %-3d | %-20s | %-11d | %-7d | %-6d | %-4d | %-5d | %-10.2f |\n", counter, fn, r, e, n, m, t, p);
+      refSerial++;
       counter++;
     }
     fclose(fp);
     printf("+-----+----------------------+-------------+---------+--------+------+-------+------------+\n");
+    // printf("\nAvailable serial numbers: %d", refSerial);
+
     // Prompt the user to enter the serial number of the record to delete
     int deleteSerial;
     printf("Enter the serial number of the record you want to delete: ");
     scanf("%d", &deleteSerial);
+
+    if (deleteSerial > refSerial)
+    {
+      printf("\nSerial exceed the available number. Record not deleted! \n");
+      goto here;
+    }
 
     // Open the file again for reading and a temporary file for writing
     fp = fopen("store.txt", "r");
@@ -628,6 +645,7 @@ void deleteRecord(void)
     }
 
     printf("Record deleted successfully.\n");
+  here:
     printf("Press any key to exit view.");
     getch();
   }
