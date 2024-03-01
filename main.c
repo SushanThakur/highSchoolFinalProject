@@ -273,12 +273,13 @@ void editRecord(void)
   printf("+-----+----------------------+-------------+---------+--------+------+-------+------------+\n");
 
   FILE *fp = fopen("store.txt", "r");
+  int counter = 1;
+  // int actualSerial = 0;
   if (fp != NULL)
   {
     char fn[55];
     int r, e, n, m, t;
     float p;
-    int counter = 1;
     rewind(fp);
     while (fscanf(fp, "%[^,],%d,%d,%d,%d\n", fn, &r, &e, &n, &m) == 5)
     {
@@ -296,9 +297,18 @@ void editRecord(void)
     return;
   }
 
+  // printf("\nCounter = %d\n", counter);
+
   int editIndex;
   printf("Enter the serial number of the record you want to edit: ");
   scanf("%d", &editIndex);
+
+  if (editIndex >= counter)
+  {
+    printf("\nSerial exceed the available record. Record not editable! ");
+    goto here;
+  }
+
   editIndex--; // Adjust index to match array indexing (0-based)
 
   if (editIndex >= 0)
@@ -360,7 +370,7 @@ void editRecord(void)
   {
     printf("Invalid serial number. Please try again.\n");
   }
-
+here:
   printf("\n\nPress any key to exit view.");
   getch();
 }
