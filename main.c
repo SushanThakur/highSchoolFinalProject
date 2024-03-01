@@ -210,7 +210,7 @@ void searchRecord(void)
     gets(searchQuery);
 
     // Convert search query to lowercase for case insensitivity
-    for (int i = 0; searchQuery[i] != '\0'; i++)
+    for (i = 0; searchQuery[i] != '\0'; i++)
     {
       searchQuery[i] = tolower(searchQuery[i]);
     }
@@ -423,9 +423,9 @@ void ascending()
   fclose(fp);
 
   // Sort the array of students based on total marks
-  for (int i = 0; i < num_records - 1; i++)
+  for (i = 0; i < num_records - 1; i++)
   {
-    for (int j = 0; j < num_records - i - 1; j++)
+    for (j = 0; j < num_records - i - 1; j++)
     {
       int total_j = students[j].eng + students[j].nep + students[j].math;
       int total_j_plus_1 = students[j + 1].eng + students[j + 1].nep + students[j + 1].math;
