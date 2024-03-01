@@ -1,3 +1,5 @@
+// CODE AVAILABLE TO LOOK AT https://github.com/SushanThakur/highSchoolFinalProject/blob/main/main.c
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
