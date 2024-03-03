@@ -617,7 +617,7 @@ void deleteRecord(void)
     if (deleteSerial > refSerial)
     {
       printf("\nSerial exceed the available number. Record not deleted! \n");
-      goto here;
+      goto here1;
     }
 
     // Open the file again for reading and a temporary file for writing
@@ -657,7 +657,7 @@ void deleteRecord(void)
     }
 
     printf("Record deleted successfully.\n");
-  here:
+  here1:
     printf("Press any key to exit view.");
     getch();
   }
