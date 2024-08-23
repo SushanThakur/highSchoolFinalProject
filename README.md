@@ -1,4 +1,4 @@
-This is a Student Record Management System with offline storage capabilities.
+Source code for 'Student Record Management System with storage capabilities'.
 
 Features:
   -adding new records
@@ -8,8 +8,5 @@ Features:
   -sorting records on the basis of marks
   -deleting unwanted record
 
-Sole Contributer: 
-  -Sushant Thakur
-
-This is a final project for my High School practical mark evaluation 2080 B.S.
+This is a C project I made for my High School practical mark evaluation 2080 B.S.
   
