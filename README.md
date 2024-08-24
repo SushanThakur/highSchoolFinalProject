@@ -8,5 +8,5 @@ Features:
   -sorting records on the basis of marks
   -deleting unwanted record
 
-This is a C project I made for my High School practical mark evaluation 2080 B.S.
+This is the C project I made for my High School practical mark evaluation 2080 B.S.
   
